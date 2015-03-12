@@ -10,7 +10,7 @@
 ### curry(fun, [arity])
 Transforms a function `fun` into a series of variadic functions.
 Each function invocation returns another function until `arity`
-arguments have been supplied, in which case, `fun` is invoke with
+arguments have been supplied, in which case, `fun` is invoked with
 the provided arguments.
 
 - **fun**: *Function* - The function to transform.
