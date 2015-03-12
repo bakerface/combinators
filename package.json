@@ -1,0 +1,31 @@
+{
+  "name": "combinators",
+  "version": "0.0.0",
+  "description": "Functional programming in JavaScript",
+  "main": "combinators.js",
+  "scripts": {
+    "test": "istanbul cover --report html node_modules/.bin/_mocha",
+    "travis": "istanbul cover --report lcovonly node_modules/.bin/_mocha && cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bakerface/combinators.git"
+  },
+  "keywords": [
+    "functional",
+    "programming",
+    "combinator"
+  ],
+  "author": "Christopher M. Baker",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bakerface/combinators/issues"
+  },
+  "homepage": "https://github.com/bakerface/combinators",
+  "devDependencies": {
+    "coveralls": "^2.11.2",
+    "istanbul": "^0.3.7",
+    "mocha": "^2.2.1",
+    "should": "^5.2.0"
+  }
+}
