@@ -1,6 +1,6 @@
 {
   "name": "combinators",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Functional programming in JavaScript",
   "main": "combinators.js",
   "scripts": {
