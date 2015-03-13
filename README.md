@@ -3,10 +3,6 @@
 # combinators
 **Functional programming in JavaScript**
 
-### Table of Contents
-1. Function
-  - [curry(fun, [arity])](#curryfunarity)
-
 ### curry(fun, [arity])
 Transforms a function `fun` into a series of variadic functions.
 Each function invocation returns another function until `arity`
@@ -41,4 +37,42 @@ curried(_, 'Henry')('John', 'Doe');
 
 curried(bind(1), bind(2), bind(0))('Doe', 'John', 'Henry');
 // => 'John Henry Doe'
+```
+
+### map(fun, array)
+Creates a new array by transforming each element in `array`
+using the transformation function `fun`.
+
+- **fun**: *Function* - The transformation function.
+- **array**: *Array* - The values to transform.
+
+``` javascript
+var map = require('combinators/map');
+
+function increment(value, index, array) {
+  return value + 1;
+}
+
+map(increment, [ 1, 2, 3 ]);
+// => [ 2, 3, 4 ]
+
+function dot(key) {
+  return function(value) {
+    return value[key];
+  };
+}
+
+var friends = [
+  { first: 'John', last: 'Doe' },
+  { first: 'Jane', last: 'Smith' }
+];
+
+var firstNameOf = dot('first');
+var lastNameOf = dot('last');
+
+map(firstNameOf, friends);
+// => [ 'John', 'Jane' ]
+
+map(lastNameOf, friends);
+// => [ 'Doe', 'Smith' ]
 ```
