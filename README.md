@@ -76,3 +76,21 @@ map(firstNameOf, friends);
 map(lastNameOf, friends);
 // => [ 'Doe', 'Smith' ]
 ```
+
+### spread(fun)
+Creates a function that invokes `fun` with an array of arguments.
+
+- **fun**: *Function* - The function to invoke.
+
+``` javascript
+var spread = require('combinators/spread');
+
+function plus(a, b) {
+  return a + b;
+}
+
+var add = spread(plus);
+
+add([1, 2]);
+// => 3
+```
