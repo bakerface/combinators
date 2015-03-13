@@ -3,6 +3,21 @@
 # combinators
 **Functional programming in JavaScript**
 
+### arg(n)
+Returns a function that returns its nth argument when invoked.
+
+- **n**: *number* - The argument index to return.
+
+``` javascript
+var arg = require('combinators/arg');
+
+arg(0)('hello', 'world');
+// => 'hello'
+
+arg(1)('hello', 'world');
+// => 'world'
+```
+
 ### curry(fun, [arity])
 Transforms a function `fun` into a series of variadic functions.
 Each function invocation returns another function until `arity`
@@ -37,6 +52,16 @@ curried(_, 'Henry')('John', 'Doe');
 
 curried(bind(1), bind(2), bind(0))('Doe', 'John', 'Henry');
 // => 'John Henry Doe'
+```
+
+### identity()
+A function that returns its first argument when invoked.
+
+``` javascript
+var identity = require('combinators/identity');
+
+identity('hello', 'world');
+// => 'hello'
 ```
 
 ### map(fun, array)
