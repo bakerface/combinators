@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2015 Christopher M. Baker
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -21,6 +21,52 @@
  *
  */
 
-'use strict';
+/**
+ * Creates a new array by transforming each element in `array`
+ * using the transformation function `fun`.
+ *
+ * @static
+ * @category Function
+ * @param {Function} fun The transformation function.
+ * @param {Array} array The values to transform.
+ * @returns {Array} The transformed values.
+ * @example
+ *
+ * function increment(value, index, array) {
+ *   return value + 1;
+ * }
+ *
+ * map(increment, [1, 2, 3]);
+ * // => [2, 3, 4]
+ *
+ * function dot(key) {
+ *   return function(value) {
+ *     return value[key];
+ *   };
+ * }
+ *
+ * var friends = [
+ *   { first: 'John', last: 'Doe' },
+ *   { first: 'Jane', last: 'Smith' }
+ * ];
+ *
+ * var firstNameOf = dot('first');
+ * var lastNameOf =  dot('last');
+ *
+ * map(firstNameOf, friends);
+ * // => [ 'John', 'Jane' ]
+ *
+ * map(lastNameOf, friends);
+ * // => [ 'Doe', 'Smith' ]
+ *
+ */
+var map = module.exports = function(fun, array) {
+  var length = array.length;
+  var result = Array(length);
 
+  for (var i = 0; i < length; i++) {
+    result[i] = fun(array[i], i, array);
+  }
 
+  return result;
+};

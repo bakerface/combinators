@@ -35,13 +35,13 @@ var placeholder = require('./placeholder');
  * @example
  *
  * fill([], 5, 'x');
- * // => ['x', 'x', 'x', 'x', 'x']
+ * // => [ 'x', 'x', 'x', 'x', 'x' ]
  *
- * fill([2, 2], 5, 'x');
- * // => [2, 2, 'x', 'x', 'x']
+ * fill([ 2, 2 ], 5, 'x');
+ * // => [ 2, 2, 'x', 'x', 'x' ]
  *
- * fill([3, 3, 3, 3], 2, 'x');
- * // => [3, 3, 3, 3]
+ * fill([ 3, 3, 3, 3 ], 2, 'x');
+ * // => [ 3, 3, 3, 3 ]
  *
  */
 function fill(array, length, value) {
