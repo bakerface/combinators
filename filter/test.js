@@ -21,5 +21,19 @@
  *
  */
 
-exports.map = require('./map');
-exports.filter = require('./filter');
+const assert = require('assert');
+const filter = require('.');
+
+function odd(n) {
+  return n & 1;
+}
+
+describe('filter', function () {
+  it('should return elements matching the predicate', function () {
+    const odds = filter(odd);
+    const input = [ 1, 2, 3 ];
+    const output = [ 1, 3 ];
+
+    assert.deepEqual(odds(input), output);
+  });
+});

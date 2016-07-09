@@ -21,5 +21,8 @@
  *
  */
 
-exports.map = require('./map');
-exports.filter = require('./filter');
+module.exports = function (fn) {
+  return function (array) {
+    return array.filter(fn);
+  };
+};

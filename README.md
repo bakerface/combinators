@@ -8,10 +8,27 @@
 [![devDependencies](https://david-dm.org/bakerface/combinators/dev-status.svg)](https://david-dm.org/bakerface/combinators#info=devDependencies)
 
 ### Table of Contents
--  [map](#mapfnarray)(*fn*)(*array*) - apply *fn* to each element of *array*
+-  [filter](#filterfnarray)(*fn*)(*array*) - filter elements of an array
+-  [map](#mapfnarray)(*fn*)(*array*) - map elements of an array
+
+#### filter(fn)(array)
+Removes all elements in *array* where the predicate *fn* returns falsy.
+
+``` javascript
+const filter = require('combinators/filter');
+
+function odd(n) {
+  return n & 1;
+}
+
+const odds = filter(odd);
+
+odds([ 1, 2, 3 ]);
+// => [ 1, 3 ]
+```
 
 #### map(fn)(array)
-Applies *fn* to each element of *array* and returns the result.
+Maps each element of *array* to the result of the function *fn*.
 
 ``` javascript
 const map = require('combinators/map');
