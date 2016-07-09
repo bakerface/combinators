@@ -1,5 +1,5 @@
-/*
- * Copyright (c) 2015 Christopher M. Baker
+/**
+ * Copyright (c) 2016 Chris Baker <mail.chris.baker@gmail.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -8,8 +8,8 @@
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -21,26 +21,8 @@
  *
  */
 
-var should = require('should');
-var spread = require('../spread');
-
-function greet(name) {
-  return 'Hello ' + name + ', my name is ' + this.name + '.';
-}
-
-var john = {
-  name: 'John',
-  greet: greet
+module.exports = function (fn) {
+  return function (array) {
+    return array.map(fn);
+  };
 };
-
-var jane = {
-  name: 'Jane',
-  greet: spread(greet)
-};
-
-describe('spread(fun)', function() {
-  it('should apply the array as arguments to the function', function() {
-    should(john.greet('Jane')).eql('Hello Jane, my name is John.');
-    should(jane.greet(['John'])).eql('Hello John, my name is Jane.');
-  })
-})

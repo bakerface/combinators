@@ -1,31 +1,54 @@
 {
   "name": "combinators",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "description": "Functional programming in JavaScript",
-  "main": "combinators.js",
-  "scripts": {
-    "test": "istanbul cover --report html node_modules/.bin/_mocha",
-    "travis": "istanbul cover --report lcovonly node_modules/.bin/_mocha && cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js"
-  },
+  "author": "Chris Baker <mail.chris.baker@gmail.com>",
+  "license": "MIT",
+  "main": "index.js",
+  "homepage": "https://github.com/bakerface/combinators#readme",
+  "keywords": [
+    "combinator",
+    "functional"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/bakerface/combinators.git"
+    "url": "git+https://github.com/bakerface/combinators.git"
   },
-  "keywords": [
-    "functional",
-    "programming",
-    "combinator"
-  ],
-  "author": "Christopher M. Baker",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/bakerface/combinators/issues"
   },
-  "homepage": "https://github.com/bakerface/combinators",
+  "scripts": {
+    "pretest": "xo",
+    "test": "istanbul cover _mocha */test.js",
+    "codeclimate": "codeclimate-test-reporter < coverage/lcov.info"
+  },
+  "xo": {
+    "space": true,
+    "globals": [
+      "describe",
+      "beforeEach",
+      "afterEach",
+      "it"
+    ],
+    "rules": {
+      "babel/array-bracket-spacing": [
+        "error",
+        "always"
+      ],
+      "babel/object-curly-spacing": [
+        "error",
+        "always"
+      ],
+      "brace-style": [
+        "error",
+        "stroustrup"
+      ]
+    }
+  },
   "devDependencies": {
-    "coveralls": "^2.11.2",
-    "istanbul": "^0.3.7",
-    "mocha": "^2.2.1",
-    "should": "^5.2.0"
+    "codeclimate-test-reporter": "^0.3.3",
+    "istanbul": "^0.4.4",
+    "mocha": "^2.5.3",
+    "xo": "^0.16.0"
   }
 }

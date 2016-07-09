@@ -1,18 +1,6 @@
 language: node_js
+node_js: stable
+sudo: false
 
-node_js:
-  - "0.10"
-  - "0.11"
-
-branches:
-  only:
-    - master
-
-script:
-  - npm run-script travis
-
-after_script:
-  - if [[ `node --version` == *v0.10* ]]; then cat ./build/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js; fi
-
-before_install:
-  - if [[ `node --version` == *v0.8* ]]; then npm install -g npm@1.4.28; fi
+after_success:
+  - npm run codeclimate

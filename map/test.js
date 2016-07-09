@@ -1,5 +1,5 @@
-/*
- * Copyright (c) 2015 Christopher M. Baker
+/**
+ * Copyright (c) 2016 Chris Baker <mail.chris.baker@gmail.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -8,8 +8,8 @@
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
  *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -21,12 +21,19 @@
  *
  */
 
-var should = require('should');
-var arg = require('../arg');
+const assert = require('assert');
+const map = require('.');
 
-describe('arg(n)', function() {
-  it('should return the nth argument', function() {
-    should(arg(0)('hello', 'world')).eql('hello');
-    should(arg(1)('hello', 'world')).eql('world');
-  })
-})
+function double(n) {
+  return n + n;
+}
+
+describe('map', function () {
+  it('should apply the function to the elements', function () {
+    const twice = map(double);
+    const input = [ 1, 2, 3, 'foo' ];
+    const output = [ 2, 4, 6, 'foofoo' ];
+
+    assert.deepEqual(twice(input), output);
+  });
+});
