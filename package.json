@@ -1,6 +1,6 @@
 {
   "name": "combinators",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Functional programming in JavaScript",
   "author": "Chris Baker <mail.chris.baker@gmail.com>",
   "license": "MIT",
@@ -9,8 +9,10 @@
   "keywords": [
     "combinator",
     "functional",
+    "call",
     "filter",
-    "map"
+    "map",
+    "reduce"
   ],
   "repository": {
     "type": "git",

@@ -21,4 +21,12 @@
  *
  */
 
-module.exports = require('../call')(Array.prototype.map);
+module.exports = function (fn) {
+  return function () {
+    var args = arguments;
+
+    return function (instance) {
+      return fn.apply(instance, args);
+    };
+  };
+};

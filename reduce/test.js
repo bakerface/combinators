@@ -21,4 +21,27 @@
  *
  */
 
-module.exports = require('../call')(Array.prototype.map);
+const assert = require('assert');
+const reduce = require('.');
+
+function add(a, b) {
+  return a + b;
+}
+
+describe('reduce', function () {
+  it('should apply the function', function () {
+    const sum = reduce(add);
+    const input = [ 1, 2, 3 ];
+    const output = 6;
+
+    assert.deepEqual(sum(input), output);
+  });
+
+  it('should start with the initial value', function () {
+    const sum = reduce(add, 10);
+    const input = [ 1, 2, 3 ];
+    const output = 16;
+
+    assert.deepEqual(sum(input), output);
+  });
+});

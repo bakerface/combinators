@@ -21,4 +21,18 @@
  *
  */
 
-module.exports = require('../call')(Array.prototype.map);
+const assert = require('assert');
+const call = require('.');
+
+function plus(n) {
+  return this + n;
+}
+
+describe('thiscall', function () {
+  it('should invoke the function', function () {
+    const add = call(plus);
+    const add10 = add(10);
+
+    assert.equal(add10(5), 15);
+  });
+});

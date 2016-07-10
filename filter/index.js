@@ -21,8 +21,4 @@
  *
  */
 
-module.exports = function (fn) {
-  return function (array) {
-    return array.filter(fn);
-  };
-};
+module.exports = require('../call')(Array.prototype.filter);

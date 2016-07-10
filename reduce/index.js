@@ -21,4 +21,4 @@
  *
  */
 
-module.exports = require('../call')(Array.prototype.map);
+module.exports = require('../call')(Array.prototype.reduce);

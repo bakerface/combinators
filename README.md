@@ -8,8 +8,22 @@
 [![devDependencies](https://david-dm.org/bakerface/combinators/dev-status.svg)](https://david-dm.org/bakerface/combinators#info=devDependencies)
 
 ### Table of Contents
+-  [call](#callfnargsinstance)(*fn*)(*...args*)(*instance*) - call a function on an instance
 -  [filter](#filterfnarray)(*fn*)(*array*) - filter elements of an array
 -  [map](#mapfnarray)(*fn*)(*array*) - map elements of an array
+-  [reduce](#reducefn-firstarray)(*fn*, *[first]*)(*array*) - reduce elements of an array
+
+#### call(fn)(...args)(instance)
+Invokes *fn* on the *instance* with the specified *args*.
+
+``` javascript
+const call = require('combinators/call');
+const concat = call(Array.prototype.concat);
+const end = concat('end');
+
+end([ 1, 2, 3 ]);
+// => [ 1, 2, 3, 'end' ]
+```
 
 #### filter(fn)(array)
 Removes all elements in *array* where the predicate *fn* returns falsy.
@@ -41,4 +55,24 @@ const twice = map(double);
 
 twice([ 1, 2, 3, 'foo' ]);
 // => [ 2, 4, 6, 'foofoo' ]
+```
+
+#### reduce(fn, [first])(array)
+Reduces the elements in *array* by invoking *fn*. If specified, use *first* as
+the initial value.
+
+``` javascript
+const reduce = require('combinators/reduce');
+
+function add(a, b) {
+  return a + b;
+}
+
+const sum = reduce(add);
+sum([ 1, 2, 3 ]);
+// => 6
+
+const sum10 = reduce(add, 10);
+sum10([ 1, 2, 3 ]);
+// => 16
 ```
