@@ -22,6 +22,6 @@
  */
 
 exports.call = require('./call');
-exports.map = require('./map');
 exports.filter = require('./filter');
+exports.map = require('./map');
 exports.reduce = require('./reduce');

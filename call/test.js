@@ -28,7 +28,7 @@ function plus(n) {
   return this + n;
 }
 
-describe('thiscall', function () {
+describe('call', function () {
   it('should invoke the function', function () {
     const add = call(plus);
     const add10 = add(10);
