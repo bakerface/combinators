@@ -21,8 +21,30 @@
  *
  */
 
-exports.call = require('./call');
-exports.filter = require('./filter');
-exports.map = require('./map');
-exports.reduce = require('./reduce');
-exports.tap = require('./tap');
+const assert = require('assert');
+const tap = require('.');
+
+function remove(key) {
+  return function (object) {
+    delete object[key];
+  };
+}
+
+const sanitize = tap(remove('password'));
+
+describe('tap', function () {
+  it('should apply the function and return the value', function () {
+    const user = {
+      id: 1,
+      username: 'foo',
+      password: 'secret'
+    };
+
+    const expected = {
+      id: 1,
+      username: 'foo'
+    };
+
+    assert.deepEqual(sanitize(user), expected);
+  });
+});

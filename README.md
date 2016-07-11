@@ -12,6 +12,7 @@
 -  [filter](#filterfnarray)(*fn*)(*array*) - filter elements of an array
 -  [map](#mapfnarray)(*fn*)(*array*) - map elements of an array
 -  [reduce](#reducefn-firstarray)(*fn*, *[first]*)(*array*) - reduce elements of an array
+-  [tap](#tapfn-value)(*fn*)(*value*) - apply a side-effect
 
 #### call(fn)(...args)(instance)
 Invokes *fn* on the *instance* with the specified *args*.
@@ -75,4 +76,28 @@ sum([ 1, 2, 3 ]);
 const sum10 = reduce(add, 10);
 sum10([ 1, 2, 3 ]);
 // => 16
+```
+
+#### tap(fn)(value)
+Invokes *fn* with the *value* and then returns *value*.
+
+``` javascript
+const tap = require('combinators/tap');
+
+function remove(key) {
+  return function (object) {
+    delete object[key];
+  };
+}
+
+const sanitize = tap(remove('password'));
+
+const user = {
+  id: 1,
+  username: 'foo',
+  password: 'secret'
+};
+
+sanitize(user);
+// => { id: 1, username: 'foo' } 
 ```
