@@ -12,7 +12,7 @@
 -  [filter](#filterfnarray)(*fn*)(*array*) - filter elements of an array
 -  [map](#mapfnarray)(*fn*)(*array*) - map elements of an array
 -  [reduce](#reducefn-firstarray)(*fn*, *[first]*)(*array*) - reduce elements of an array
--  [tap](#tapfn-value)(*fn*)(*value*) - apply a side-effect
+-  [tap](#tapfnvalue)(*fn*)(*value*) - apply a side-effect
 
 #### call(fn)(...args)(instance)
 Invokes *fn* on the *instance* with the specified *args*.
