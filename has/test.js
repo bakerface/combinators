@@ -21,10 +21,38 @@
  *
  */
 
-exports.apply = require('./apply');
-exports.call = require('./call');
-exports.filter = require('./filter');
-exports.has = require('./has');
-exports.map = require('./map');
-exports.reduce = require('./reduce');
-exports.tap = require('./tap');
+const assert = require('assert');
+const has = require('.');
+
+const named = has('name');
+
+describe('has', function () {
+  it('should return true if the property exists', function () {
+    const user = {
+      id: 1,
+      username: 'foo',
+      name: 'Foo'
+    };
+
+    assert.equal(named(user), true);
+  });
+
+  it('should return true if the property is null', function () {
+    const user = {
+      id: 1,
+      username: 'foo',
+      name: null
+    };
+
+    assert.equal(named(user), true);
+  });
+
+  it('should return false if the property is undefined', function () {
+    const user = {
+      id: 1,
+      username: 'foo'
+    };
+
+    assert.equal(named(user), false);
+  });
+});

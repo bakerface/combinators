@@ -11,6 +11,7 @@
 -  [apply](#applyfnargsinstance)(*fn*)(*args*)(*instance*) - apply a function to  an instance
 -  [call](#callfnargsinstance)(*fn*)(*...args*)(*instance*) - call a function on an instance
 -  [filter](#filterfnarray)(*fn*)(*array*) - filter elements of an array
+-  [has](#haskeyobject)(*key*)(*object*) - check if a property exists
 -  [map](#mapfnarray)(*fn*)(*array*) - map elements of an array
 -  [reduce](#reducefn-firstarray)(*fn*, *[first]*)(*array*) - reduce elements of an array
 -  [tap](#tapfnvalue)(*fn*)(*value*) - apply a side-effect
@@ -53,6 +54,20 @@ const odds = filter(odd);
 
 odds([ 1, 2, 3 ]);
 // => [ 1, 3 ]
+```
+
+#### has(key)(object)
+Returns *true* if the *object* has a property named *key*; otherwise, returns *false*.
+
+``` javascript
+const has = require('combinators/has');
+const named = has('name');
+
+named({ id: 1, name: 'foo' });
+// => true
+
+named({ id: 1, username: 'foo' });
+// => false
 ```
 
 #### map(fn)(array)
