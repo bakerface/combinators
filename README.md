@@ -8,14 +8,14 @@
 [![devDependencies](https://david-dm.org/bakerface/combinators/dev-status.svg)](https://david-dm.org/bakerface/combinators#info=devDependencies)
 
 ### Table of Contents
--  [apply](#applyfnargsinstance)(*fn*)(*...args*)(*instance*) - apply a function to  an instance
+-  [apply](#applyfnargsinstance)(*fn*)(*args*)(*instance*) - apply a function to  an instance
 -  [call](#callfnargsinstance)(*fn*)(*...args*)(*instance*) - call a function on an instance
 -  [filter](#filterfnarray)(*fn*)(*array*) - filter elements of an array
 -  [map](#mapfnarray)(*fn*)(*array*) - map elements of an array
 -  [reduce](#reducefn-firstarray)(*fn*, *[first]*)(*array*) - reduce elements of an array
 -  [tap](#tapfnvalue)(*fn*)(*value*) - apply a side-effect
 
-#### apply(fn)([args])(instance)
+#### apply(fn)(args)(instance)
 Invokes *fn* on the *instance* with the specified *args*.
 
 ``` javascript
