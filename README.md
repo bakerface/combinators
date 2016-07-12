@@ -8,11 +8,24 @@
 [![devDependencies](https://david-dm.org/bakerface/combinators/dev-status.svg)](https://david-dm.org/bakerface/combinators#info=devDependencies)
 
 ### Table of Contents
+-  [apply](#applyfnargsinstance)(*fn*)(*...args*)(*instance*) - apply a function to  an instance
 -  [call](#callfnargsinstance)(*fn*)(*...args*)(*instance*) - call a function on an instance
 -  [filter](#filterfnarray)(*fn*)(*array*) - filter elements of an array
 -  [map](#mapfnarray)(*fn*)(*array*) - map elements of an array
 -  [reduce](#reducefn-firstarray)(*fn*, *[first]*)(*array*) - reduce elements of an array
 -  [tap](#tapfnvalue)(*fn*)(*value*) - apply a side-effect
+
+#### apply(fn)([args])(instance)
+Invokes *fn* on the *instance* with the specified *args*.
+
+``` javascript
+const apply = require('combinators/apply');
+const concat = apply(Array.prototype.concat);
+const end = concat([ 4, 5, 6 ]);
+
+end([ 1, 2, 3 ]);
+// => [ 1, 2, 3, 4, 5, 6 ]
+```
 
 #### call(fn)(...args)(instance)
 Invokes *fn* on the *instance* with the specified *args*.
@@ -20,14 +33,14 @@ Invokes *fn* on the *instance* with the specified *args*.
 ``` javascript
 const call = require('combinators/call');
 const concat = call(Array.prototype.concat);
-const end = concat('end');
+const end = concat(4, 5, 6);
 
 end([ 1, 2, 3 ]);
-// => [ 1, 2, 3, 'end' ]
+// => [ 1, 2, 3, 4, 5, 6 ]
 ```
 
 #### filter(fn)(array)
-Removes all elements in *array* where the predicate *fn* returns falsy.
+Returns the subset of *array* where the predicate *fn* is truthy.
 
 ``` javascript
 const filter = require('combinators/filter');

@@ -21,9 +21,10 @@
  *
  */
 
-exports.apply = require('./apply');
-exports.call = require('./call');
-exports.filter = require('./filter');
-exports.map = require('./map');
-exports.reduce = require('./reduce');
-exports.tap = require('./tap');
+module.exports = function (fn) {
+  return function (args) {
+    return function (instance) {
+      return fn.apply(instance, args);
+    };
+  };
+};

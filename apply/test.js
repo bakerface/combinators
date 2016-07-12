@@ -21,9 +21,18 @@
  *
  */
 
-exports.apply = require('./apply');
-exports.call = require('./call');
-exports.filter = require('./filter');
-exports.map = require('./map');
-exports.reduce = require('./reduce');
-exports.tap = require('./tap');
+const assert = require('assert');
+const apply = require('.');
+
+function plus(n) {
+  return this + n;
+}
+
+describe('apply', function () {
+  it('should invoke the function', function () {
+    const add = apply(plus);
+    const add10 = add([ 10 ]);
+
+    assert.equal(add10(5), 15);
+  });
+});
