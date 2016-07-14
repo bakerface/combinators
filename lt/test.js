@@ -21,14 +21,21 @@
  *
  */
 
-exports.apply = require('./apply');
-exports.call = require('./call');
-exports.compose = require('./compose');
-exports.equal = require('./equal');
-exports.filter = require('./filter');
-exports.has = require('./has');
-exports.identity = require('./identity');
-exports.lt = require('./lt');
-exports.map = require('./map');
-exports.reduce = require('./reduce');
-exports.tap = require('./tap');
+const assert = require('assert');
+const lt = require('.');
+
+const lessThan10 = lt(10);
+
+describe('lt', function () {
+  it('should return true if the value is less than', function () {
+    assert.equal(lessThan10(3), true);
+  });
+
+  it('should return false if the value is greater than', function () {
+    assert.equal(lessThan10(11), false);
+  });
+
+  it('should return false if the value is equal to', function () {
+    assert.equal(lessThan10(10), false);
+  });
+});

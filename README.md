@@ -15,6 +15,7 @@
 -  [filter](#filterfnarray)(*fn*)(*array*) - filter elements of an array
 -  [has](#haskeyobject)(*key*)(*object*) - check if a property exists
 -  [identity](#identityvalue)(*value*) - return a value unmodified
+-  [lt](#ltnvalue)(*n*)(*value*) - check if a value is less than another
 -  [map](#mapfnarray)(*fn*)(*array*) - map elements of an array
 -  [reduce](#reducefn-firstarray)(*fn*, *[first]*)(*array*) - reduce elements of an array
 -  [tap](#tapfnvalue)(*fn*)(*value*) - apply a side-effect
@@ -125,6 +126,23 @@ identity(42);
 
 identity('foo');
 // => 'foo'
+```
+
+#### lt(n)(value)
+Returns *true* if *value* is considered less than *n*; otherwise, returns *false*.
+
+``` javascript
+const lt = require('combinators/lt');
+const lessThan10 = lt(10);
+
+lessThan10(5);
+// => true
+
+lessThan10(15);
+// => false
+
+lessThan10(10);
+// => false
 ```
 
 #### map(fn)(array)
