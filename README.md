@@ -11,6 +11,7 @@
 -  [apply](#applyfnargsinstance)(*fn*)(*args*)(*instance*) - apply a function to  an instance
 -  [call](#callfnargsinstance)(*fn*)(*...args*)(*instance*) - call a function on an instance
 -  [compose](#composefunctionsvalue)(*...functions*)(*value*) - apply a series of functions to a value
+-  [cond](#condpredicate-action-value)(*predicate*, *action*, ...)(*value*) - conditional function invocation
 -  [constant](#constantvalue)(*value*)() - return a constant
 -  [equal](#equalexpectedactual)(*expected*)(*actual*) - check for equality
 -  [false](#false)() - returns false
@@ -69,6 +70,34 @@ const solve = compose(mul(3), add(1));
 
 solve(1);
 // => 6
+```
+
+#### cond(predicate, action, ...)(value)
+Invokes the first *action* where the *predicate* is truthy for *value*. If none of the predicates are truthy then *value* is returned.
+
+``` javascript
+const cond = require('combinators/cond');
+const c = require('combinators/constant');
+const eq = require('combinators/equal');
+const t = require('combinators/true');
+
+const greet = cond(
+  eq('english'), c('hello'),
+  eq('french'), c('bonjour'),
+  eq('spanish'), c('hola'),
+  t, c('hey'));
+
+greet('english');
+// => 'hello'
+
+greet('french');
+// => 'bonjour'
+
+greet('spanish');
+// => 'hola'
+
+greet('unknown');
+// => 'hey'
 ```
 
 #### constant(value)()
