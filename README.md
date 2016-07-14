@@ -11,7 +11,9 @@
 -  [apply](#applyfnargsinstance)(*fn*)(*args*)(*instance*) - apply a function to  an instance
 -  [call](#callfnargsinstance)(*fn*)(*...args*)(*instance*) - call a function on an instance
 -  [compose](#composefunctionsvalue)(*...functions*)(*value*) - apply a series of functions to a value
+-  [constant](#constantvalue)(*value*)() - return a constant
 -  [equal](#equalexpectedactual)(*expected*)(*actual*) - check for equality
+-  [false](#false)() - returns false
 -  [filter](#filterfnarray)(*fn*)(*array*) - filter elements of an array
 -  [has](#haskeyobject)(*key*)(*object*) - check if a property exists
 -  [identity](#identityvalue)(*value*) - return a value unmodified
@@ -19,6 +21,7 @@
 -  [map](#mapfnarray)(*fn*)(*array*) - map elements of an array
 -  [reduce](#reducefn-firstarray)(*fn*, *[first]*)(*array*) - reduce elements of an array
 -  [tap](#tapfnvalue)(*fn*)(*value*) - apply a side-effect
+-  [true](#true)() - returns true
 
 #### apply(fn)(args)(instance)
 Invokes *fn* on the *instance* with the specified *args*.
@@ -68,6 +71,20 @@ solve(1);
 // => 6
 ```
 
+#### constant(value)()
+Returns a function that returns *value*.
+
+``` javascript
+const constant = require('combinators/constant');
+const two = constant(2);
+
+two();
+// => 2
+
+two('foo');
+// => 2
+```
+
 #### equal(expected)(actual)
 Returns *true* if the *expected* and *actual* are considered strictly equal; otherwise returns *false*.
 
@@ -82,6 +99,16 @@ two('2');
 // => false
 
 two(3);
+// => false
+```
+
+#### false()
+Returns *false*.
+
+``` javascript
+const f = require('combinators/false');
+
+f();
 // => false
 ```
 
@@ -203,4 +230,14 @@ const user = {
 
 sanitize(user);
 // => { id: 1, username: 'foo' } 
+```
+
+#### true()
+Returns *true*.
+
+``` javascript
+const t = require('combinators/true');
+
+t();
+// => true
 ```
