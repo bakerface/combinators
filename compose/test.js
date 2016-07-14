@@ -21,13 +21,29 @@
  *
  */
 
-exports.apply = require('./apply');
-exports.call = require('./call');
-exports.compose = require('./compose');
-exports.equal = require('./equal');
-exports.filter = require('./filter');
-exports.has = require('./has');
-exports.identity = require('./identity');
-exports.map = require('./map');
-exports.reduce = require('./reduce');
-exports.tap = require('./tap');
+const assert = require('assert');
+const compose = require('.');
+
+function add(n) {
+  return function (m) {
+    return m + n;
+  };
+}
+
+function mul(n) {
+  return function (m) {
+    return m * n;
+  };
+}
+
+describe('compose', function () {
+  it('should apply the functions to the input', function () {
+    const solve = compose(mul(3), add(1));
+    assert.equal(solve(1), 6);
+  });
+
+  it('should default to the identity function', function () {
+    const solve = compose();
+    assert.equal(solve(1), 1);
+  });
+});

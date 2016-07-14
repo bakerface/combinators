@@ -10,9 +10,11 @@
 ### Table of Contents
 -  [apply](#applyfnargsinstance)(*fn*)(*args*)(*instance*) - apply a function to  an instance
 -  [call](#callfnargsinstance)(*fn*)(*...args*)(*instance*) - call a function on an instance
+-  [compose](#composefunctionsvalue)(*...functions*)(*value*) - apply a series of functions to a value
 -  [equal](#equalexpectedactual)(*expected*)(*actual*) - check for equality
 -  [filter](#filterfnarray)(*fn*)(*array*) - filter elements of an array
 -  [has](#haskeyobject)(*key*)(*object*) - check if a property exists
+-  [identity](#identityvalue)(*value*) - return a value unmodified
 -  [map](#mapfnarray)(*fn*)(*array*) - map elements of an array
 -  [reduce](#reducefn-firstarray)(*fn*, *[first]*)(*array*) - reduce elements of an array
 -  [tap](#tapfnvalue)(*fn*)(*value*) - apply a side-effect
@@ -39,6 +41,30 @@ const end = concat(4, 5, 6);
 
 end([ 1, 2, 3 ]);
 // => [ 1, 2, 3, 4, 5, 6 ]
+```
+
+#### compose(...functions)(value)
+Invokes a series of *functions*, in reverse order, on a *value*. The result of each function is passed as the input to the following function.
+
+``` javascript
+const compose = require('combinators/compose');
+
+function add(n) {
+  return function (m) {
+    return m + n;
+  };
+}
+
+function mul(n) {
+  return function (m) {
+    return m * n;
+  };
+}
+
+const solve = compose(mul(3), add(1));
+
+solve(1);
+// => 6
 ```
 
 #### equal(expected)(actual)
@@ -86,6 +112,19 @@ named({ id: 1, name: 'foo' });
 
 named({ id: 1, username: 'foo' });
 // => false
+```
+
+#### identity(value)
+Returns *value*.
+
+``` javascript
+const identity = require('combinators/identity');
+
+identity(42);
+// => 42
+
+identity('foo');
+// => 'foo'
 ```
 
 #### map(fn)(array)
