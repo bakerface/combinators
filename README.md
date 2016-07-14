@@ -10,6 +10,7 @@
 ### Table of Contents
 -  [apply](#applyfnargsinstance)(*fn*)(*args*)(*instance*) - apply a function to  an instance
 -  [call](#callfnargsinstance)(*fn*)(*...args*)(*instance*) - call a function on an instance
+-  [equal](#equalexpectedactual)(*expected*)(*actual*) - check for equality
 -  [filter](#filterfnarray)(*fn*)(*array*) - filter elements of an array
 -  [has](#haskeyobject)(*key*)(*object*) - check if a property exists
 -  [map](#mapfnarray)(*fn*)(*array*) - map elements of an array
@@ -38,6 +39,23 @@ const end = concat(4, 5, 6);
 
 end([ 1, 2, 3 ]);
 // => [ 1, 2, 3, 4, 5, 6 ]
+```
+
+#### equal(expected)(actual)
+Returns *true* if the *expected* and *actual* are considered strictly equal; otherwise returns *false*.
+
+``` javascript
+const equal = require('combinators/equal');
+const two = equal(2);
+
+two(2);
+// => true
+
+two('2');
+// => false
+
+two(3);
+// => false
 ```
 
 #### filter(fn)(array)

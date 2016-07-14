@@ -1,6 +1,6 @@
 {
   "name": "combinators",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "description": "Functional programming in JavaScript",
   "author": "Chris Baker <mail.chris.baker@gmail.com>",
   "license": "MIT",
@@ -11,6 +11,7 @@
     "functional",
     "apply",
     "call",
+    "equal",
     "filter",
     "has",
     "map",

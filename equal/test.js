@@ -21,11 +21,21 @@
  *
  */
 
-exports.apply = require('./apply');
-exports.call = require('./call');
-exports.equal = require('./equal');
-exports.filter = require('./filter');
-exports.has = require('./has');
-exports.map = require('./map');
-exports.reduce = require('./reduce');
-exports.tap = require('./tap');
+const assert = require('assert');
+const equal = require('.');
+
+const two = equal(2);
+
+describe('equal', function () {
+  it('should return true if the values are strictly equal', function () {
+    assert(two(2));
+  });
+
+  it('should return false if the values are not strictly equal', function () {
+    assert(!two('2'));
+  });
+
+  it('should return false if the values are not equal', function () {
+    assert(!two(3));
+  });
+});

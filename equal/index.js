@@ -21,11 +21,8 @@
  *
  */
 
-exports.apply = require('./apply');
-exports.call = require('./call');
-exports.equal = require('./equal');
-exports.filter = require('./filter');
-exports.has = require('./has');
-exports.map = require('./map');
-exports.reduce = require('./reduce');
-exports.tap = require('./tap');
+module.exports = function (expected) {
+  return function (actual) {
+    return expected === actual;
+  };
+};
