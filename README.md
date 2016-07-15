@@ -20,6 +20,7 @@
 -  [gte](#gtenvalue)(*n*)(*value*) - check if a value is greater than or equal to another
 -  [has](#haskeyobject)(*key*)(*object*) - check if a property exists
 -  [identity](#identityvalue)(*value*) - return a value unmodified
+-  [length](#lengthvalue)(*value*) - return the length of a value
 -  [lt](#ltnvalue)(*n*)(*value*) - check if a value is less than another
 -  [lte](#ltenvalue)(*n*)(*value*) - check if a value is less than or equal to another
 -  [map](#mapfnarray)(*fn*)(*array*) - map elements of an array
@@ -222,6 +223,19 @@ identity(42);
 
 identity('foo');
 // => 'foo'
+```
+
+#### length(value)
+Returns the length of *value*.
+
+``` javascript
+const length = require('combinators/length');
+
+length('foo');
+// => 3
+
+length([ 1, 2, 3, 4 ]);
+// => 4
 ```
 
 #### lt(n)(value)
