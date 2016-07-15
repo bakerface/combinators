@@ -22,20 +22,20 @@
  */
 
 const assert = require('assert');
-const lt = require('.');
+const lte = require('.');
 
-const lt10 = lt(10);
+const lte10 = lte(10);
 
-describe('lt', function () {
+describe('lte', function () {
   it('should return true if the value is less than', function () {
-    assert.equal(lt10(5), true);
+    assert.equal(lte10(5), true);
   });
 
   it('should return false if the value is greater than', function () {
-    assert.equal(lt10(15), false);
+    assert.equal(lte10(15), false);
   });
 
-  it('should return false if the value is equal to', function () {
-    assert.equal(lt10(10), false);
+  it('should return true if the value is equal to', function () {
+    assert.equal(lte10(10), true);
   });
 });

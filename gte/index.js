@@ -21,21 +21,8 @@
  *
  */
 
-const assert = require('assert');
-const lt = require('.');
-
-const lt10 = lt(10);
-
-describe('lt', function () {
-  it('should return true if the value is less than', function () {
-    assert.equal(lt10(5), true);
-  });
-
-  it('should return false if the value is greater than', function () {
-    assert.equal(lt10(15), false);
-  });
-
-  it('should return false if the value is equal to', function () {
-    assert.equal(lt10(10), false);
-  });
-});
+module.exports = function (n) {
+  return function (value) {
+    return value >= n;
+  };
+};

@@ -26,7 +26,7 @@ const gt = require('.');
 
 const greater = gt(10);
 
-describe('lt', function () {
+describe('gt', function () {
   it('should return true if the value is greater than', function () {
     assert.equal(greater(15), true);
   });

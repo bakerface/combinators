@@ -17,9 +17,11 @@
 -  [false](#false)() - returns false
 -  [filter](#filterfnarray)(*fn*)(*array*) - filter elements of an array
 -  [gt](#gtnvalue)(*n*)(*value*) - check if a value is greater than another
+-  [gte](#gtenvalue)(*n*)(*value*) - check if a value is greater than or equal to another
 -  [has](#haskeyobject)(*key*)(*object*) - check if a property exists
 -  [identity](#identityvalue)(*value*) - return a value unmodified
 -  [lt](#ltnvalue)(*n*)(*value*) - check if a value is less than another
+-  [lte](#ltenvalue)(*n*)(*value*) - check if a value is less than or equal to another
 -  [map](#mapfnarray)(*fn*)(*array*) - map elements of an array
 -  [reduce](#reducefn-firstarray)(*fn*, *[first]*)(*array*) - reduce elements of an array
 -  [tap](#tapfnvalue)(*fn*)(*value*) - apply a side-effect
@@ -175,6 +177,23 @@ greaterThan10(10);
 // => false
 ```
 
+#### gte(n)(value)
+Returns *true* if *value* is considered greater than or equal to *n*; otherwise, returns *false*.
+
+``` javascript
+const gte = require('combinators/gte');
+const greaterThanOrEqual10 = gte(10);
+
+greaterThanOrEqual10(15);
+// => true
+
+greaterThanOrEqual10(5);
+// => false
+
+greaterThanOrEqual10(10);
+// => true
+```
+
 #### has(key)(object)
 Returns *true* if the *object* has a property named *key*; otherwise, returns *false*.
 
@@ -217,6 +236,23 @@ lessThan10(15);
 
 lessThan10(10);
 // => false
+```
+
+#### lte(n)(value)
+Returns *true* if *value* is considered less than or equal to *n*; otherwise, returns *false*.
+
+``` javascript
+const lte = require('combinators/lte');
+const lessThanOrEqual10 = lte(10);
+
+lessThanOrEqual10(5);
+// => true
+
+lessThanOrEqual10(15);
+// => false
+
+lessThanOrEqual10(10);
+// => true
 ```
 
 #### map(fn)(array)
