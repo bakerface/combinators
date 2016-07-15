@@ -21,4 +21,31 @@
  *
  */
 
-module.exports = require('../get')('length');
+const assert = require('assert');
+const get = require('.');
+
+const user = {
+  id: 1,
+  username: 'foo'
+};
+
+const username = get('username');
+const name = get('name');
+
+describe('get', function () {
+  it('should return the value of the property', function () {
+    assert.equal(username(user), 'foo');
+  });
+
+  it('should return undefined for non-existant properties', function () {
+    assert.equal(name(user), undefined);
+  });
+
+  it('should return undefined if value is undefined', function () {
+    assert.equal(username(), undefined);
+  });
+
+  it('should return undefined if value is null', function () {
+    assert.equal(username(null), undefined);
+  });
+});

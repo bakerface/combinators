@@ -1,6 +1,6 @@
 {
   "name": "combinators",
-  "version": "2.17.0",
+  "version": "2.18.0",
   "description": "Functional programming in JavaScript",
   "author": "Chris Baker <mail.chris.baker@gmail.com>",
   "license": "MIT",
@@ -17,6 +17,7 @@
     "equal",
     "false",
     "filter",
+    "get",
     "gt",
     "gte",
     "has",

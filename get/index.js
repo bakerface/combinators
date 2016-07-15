@@ -21,4 +21,10 @@
  *
  */
 
-module.exports = require('../get')('length');
+module.exports = function (property) {
+  return function (value) {
+    if (typeof value !== 'undefined' && value !== null) {
+      return value[property];
+    }
+  };
+};

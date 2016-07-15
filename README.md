@@ -16,6 +16,7 @@
 -  [equal](#equalexpectedactual)(*expected*)(*actual*) - check for equality
 -  [false](#false)() - returns false
 -  [filter](#filterfnarray)(*fn*)(*array*) - filter elements of an array
+-  [get](#getpropertyvalue)(*property*)(*value*) - get value of property
 -  [gt](#gtnvalue)(*n*)(*value*) - check if a value is greater than another
 -  [gte](#gtenvalue)(*n*)(*value*) - check if a value is greater than or equal to another
 -  [has](#haskeyobject)(*key*)(*object*) - check if a property exists
@@ -162,6 +163,26 @@ const odds = filter(odd);
 
 odds([ 1, 2, 3 ]);
 // => [ 1, 3 ]
+```
+
+#### get(property)(value)
+Returns the *property* of a *value*. If *value* is *undefined* or *null*, then *undefined* is returned.
+
+``` javascript
+const get = require('combinators/get');
+const name = get('name');
+
+name({ id: 1, name: 'foo' });
+// => 'foo'
+
+name({ id: 1 })
+// => undefined
+
+name()
+// => undefined
+
+name(null)
+// => undefined
 ```
 
 #### gt(n)(value)
