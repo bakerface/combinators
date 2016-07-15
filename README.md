@@ -26,7 +26,7 @@
 -  [not](#notvalue)(*value*) - invert a value
 -  [reduce](#reducefn-firstarray)(*fn*, *[first]*)(*array*) - reduce elements of an array
 -  [tap](#tapfnvalue)(*fn*)(*value*) - apply a side-effect
--  [toss](#tosserrorpropertyvalue)(*Error*, *[property]*)(*value*) - throw an error
+-  [toss](#tosserror-propertyvalue)(*Error*, *[property]*)(*value*) - throw an error
 -  [true](#true)() - returns true
 -  [typeof](#typeofvalue)(*value*) - returns the type of a value
 
