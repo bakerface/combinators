@@ -23,6 +23,7 @@
 -  [lt](#ltnvalue)(*n*)(*value*) - check if a value is less than another
 -  [lte](#ltenvalue)(*n*)(*value*) - check if a value is less than or equal to another
 -  [map](#mapfnarray)(*fn*)(*array*) - map elements of an array
+-  [not](#notvalue)(*value*) - invert a value
 -  [reduce](#reducefn-firstarray)(*fn*, *[first]*)(*array*) - reduce elements of an array
 -  [tap](#tapfnvalue)(*fn*)(*value*) - apply a side-effect
 -  [toss](#tosserrorvalue)(*Error*)(*value*) - throw an error
@@ -270,6 +271,19 @@ const twice = map(double);
 
 twice([ 1, 2, 3, 'foo' ]);
 // => [ 2, 4, 6, 'foofoo' ]
+```
+
+#### not(value)
+Returns the inverse of *value*.
+
+``` javascript
+const not = require('combinators/not');
+
+not(true)
+// => false
+
+not(false)
+// => true
 ```
 
 #### reduce(fn, [first])(array)
