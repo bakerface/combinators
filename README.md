@@ -16,6 +16,7 @@
 -  [equal](#equalexpectedactual)(*expected*)(*actual*) - check for equality
 -  [false](#false)() - returns false
 -  [filter](#filterfnarray)(*fn*)(*array*) - filter elements of an array
+-  [gt](#gtnvalue)(*n*)(*value*) - check if a value is greater than another
 -  [has](#haskeyobject)(*key*)(*object*) - check if a property exists
 -  [identity](#identityvalue)(*value*) - return a value unmodified
 -  [lt](#ltnvalue)(*n*)(*value*) - check if a value is less than another
@@ -155,6 +156,23 @@ const odds = filter(odd);
 
 odds([ 1, 2, 3 ]);
 // => [ 1, 3 ]
+```
+
+#### gt(n)(value)
+Returns *true* if *value* is considered greater than *n*; otherwise, returns *false*.
+
+``` javascript
+const gt = require('combinators/gt');
+const greaterThan10 = gt(10);
+
+greaterThan10(15);
+// => true
+
+greaterThan10(5);
+// => false
+
+greaterThan10(10);
+// => false
 ```
 
 #### has(key)(object)
