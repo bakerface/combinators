@@ -28,6 +28,7 @@
 -  [tap](#tapfnvalue)(*fn*)(*value*) - apply a side-effect
 -  [toss](#tosserrorvalue)(*Error*)(*value*) - throw an error
 -  [true](#true)() - returns true
+-  [typeof](#typeofvalue)(*value*) - returns the type of a value
 
 #### apply(fn)(args)(instance)
 Invokes *fn* on the *instance* with the specified *args*.
@@ -348,4 +349,17 @@ const t = require('combinators/true');
 
 t();
 // => true
+```
+
+#### typeof(value)
+Returns the type of the specified *value*.
+
+``` javascript
+const type = require('combinators/typeof');
+
+type(42);
+// => 'number'
+
+type('foo');
+// => 'string'
 ```
