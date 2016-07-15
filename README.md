@@ -25,6 +25,7 @@
 -  [map](#mapfnarray)(*fn*)(*array*) - map elements of an array
 -  [reduce](#reducefn-firstarray)(*fn*, *[first]*)(*array*) - reduce elements of an array
 -  [tap](#tapfnvalue)(*fn*)(*value*) - apply a side-effect
+-  [toss](#tosserrorvalue)(*Error*)(*value*) - throw an error
 -  [true](#true)() - returns true
 
 #### apply(fn)(args)(instance)
@@ -313,6 +314,16 @@ const user = {
 
 sanitize(user);
 // => { id: 1, username: 'foo' } 
+```
+
+#### toss(Error)(value)
+Creates an instance of *Error* with the specified *value* and throws it.
+
+``` javascript
+const toss = require('combinators/toss');
+
+toss(Error)('foo');
+// => Error: foo
 ```
 
 #### true()
