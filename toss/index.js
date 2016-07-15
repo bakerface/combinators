@@ -21,7 +21,30 @@
  *
  */
 
-module.exports = function (Error) {
+function fromObject(object, property) {
+  return class extends Error {
+    constructor(value) {
+      super();
+      Object.assign(this, object);
+      this[property] = value;
+    }
+  };
+}
+
+function fromString(name, property) {
+  return fromObject({ name }, property);
+}
+
+module.exports = function (Error, property) {
+  property = property || 'message';
+
+  if (typeof Error === 'string') {
+    Error = fromString(Error, property);
+  }
+  else if (typeof Error === 'object') {
+    Error = fromObject(Error, property);
+  }
+
   return function (value) {
     throw new Error(value);
   };

@@ -25,13 +25,44 @@ const assert = require('assert');
 const toss = require('.');
 
 describe('toss', function () {
-  it('should throw an error with the value', function (done) {
+  it('should create an error from a constructor', function (done) {
     try {
-      toss(Error)('foo');
+      toss(Error)('A message');
     }
     catch (err) {
-      assert.deepEqual(err.name, 'Error');
-      assert.deepEqual(err.message, 'foo');
+      assert(err instanceof Error);
+      assert.equal(err.name, 'Error');
+      assert.equal(err.message, 'A message');
+      done();
+    }
+  });
+
+  it('should create an error from a name', function (done) {
+    try {
+      toss('CustomError')('A message');
+    }
+    catch (err) {
+      assert(err instanceof Error);
+      assert.equal(err.name, 'CustomError');
+      assert.equal(err.message, 'A message');
+      done();
+    }
+  });
+
+  it('should create an error from an object', function (done) {
+    const error = {
+      name: 'CustomError',
+      status: 500
+    };
+
+    try {
+      toss(error)('A message');
+    }
+    catch (err) {
+      assert(err instanceof Error);
+      assert.equal(err.name, 'CustomError');
+      assert.equal(err.message, 'A message');
+      assert.equal(err.status, 500);
       done();
     }
   });
