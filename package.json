@@ -1,6 +1,6 @@
 {
   "name": "combinators",
-  "version": "3.22.0",
+  "version": "3.23.0",
   "description": "Functional programming in JavaScript",
   "author": "Chris Baker <mail.chris.baker@gmail.com>",
   "license": "MIT",
